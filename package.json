@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "Node_JS_File_Upload",
   "main": "server.js",
+  “scripts”: {
+   “start”: “npm install & node server.js”,
+   “test”: “echo \“Error: no test specified\” && exit 1"
+  },
   "dependencies": {
     "@azure/cosmos": "^2.1.5",
     "body-parser": "^1.15.2",
