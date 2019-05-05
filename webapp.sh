@@ -15,7 +15,10 @@ az storage account create --name webappstorage --sku Standard_LRS --resource-gro
 --kind blobStorage --location southcentralus --access-tier Hot 
 
 ## Create an container under existing storage account and kind of storage
-az storage container create --name blobcontainer --public-access blob --account-key
+## create a container for blobstorage
+az storage container create --name blobcontainer --public-access blob \
+--account-key SMbLkFIoNkTxNN6VcwkxjDwDriKc8wmfMwupkOOwgOvbE5S5GdFRk4PGdUpKGvIPrCg63ZfSNop0sAA9A0tNBw== \
+--account-name twebappstorage
 
 ## Create a web app.
 az webapp create --name $webappname --resource-group $group --plan $serviceplan -r "node|10.14"
