@@ -1,44 +1,31 @@
 const express = require('express');
 const path = require('path')
-const fileUpload = require('express-fileupload')
+const fs = require('fs')
 const multer = require ("multer"); // storage of images
 const port = 8000;
 const app = express();
-
-app.use(fileUpload());
-app.get("/", function (req, res) { 
-    res.sendFile(path.join(__dirname + "/index.html")); 
-}); 
-
-// Set storage engine
-const storage = multer.diskStorage({
-    destination: './public/uploads',
-    filename: function (req, file, cb) {        
-    // null as first argument means no error
-        cb(null, Date.now() + '-' + file.originalname )
-    }
-})
+const directoryPath = path.join(__dirname, '/public/uploads')
+app.use(express.static('.'));
 
 // Init upload
 const upload = multer({
-    storage: storage, 
-    limits: {
-        fileSize: 100
-    },
-    fileFilter: function (req, file, cb) {
-        sanitizeFile(file, cb);
-    }
-}).single('files')
-
-
+    dest: directoryPath
+}).single('imgUploader')
 
 // Handle the upload route
 app.post("/upload", upload, function (req, res) { 
-    console.log(req.files)
-    let sampleFile = req.files.imgUploader;
-    let uploadPath = __dirname + '/public/uploads' + sampleFile.name;
-    res.send(uploadPath)
+    res.redirect('/')
 }); 
+
+app.get('/images', function (req, res) {
+   
+fs.readdir(directoryPath, (err, files) => {
+    if (err) {
+        return res.json([])
+    }
+    return res.json(files);
+ })
+})
  
 app.listen(8000, function () { 
     console.log("Listening to port 8000"); 
