@@ -12,7 +12,4 @@ if(learn){
          learn.appendChild(img)  //Node.appendChild() method adds a node to the end of the list of children of a specified parent node.
        })
    });
-
-
-
 }
