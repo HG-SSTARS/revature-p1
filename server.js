@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path')
 const fs = require('fs')
 const multer = require ("multer"); // storage of images
-const port = 8000;
+const port = 8080;
 const app = express();
 const directoryPath = path.join(__dirname, '/public/uploads')
 app.use(express.static('.'));
@@ -27,6 +27,6 @@ fs.readdir(directoryPath, (err, files) => {
  })
 })
  
-app.listen(8000, function () { 
-    console.log("Listening to port 8000"); 
+app.listen(8080, function () { 
+    console.log("Listening to port 8080"); 
 });
