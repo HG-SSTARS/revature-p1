@@ -4,7 +4,6 @@ group=$1
 webappname=$2
 serviceplan=$3
 
-
 ## create resourcegroup
 az group create --name $group --location southcentralus
 
