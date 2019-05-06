@@ -16,7 +16,7 @@ const {
   } = require('@azure/storage-blob');
 
   const inMemoryStorage = multer.memoryStorage();
-  const uploadStrategy = multer({ storage: inMemoryStorage }).single('imgUploader');
+  const uploadStrategy = multer({ storage: inMemoryStorage }).single('image');
   const getStream = require('into-stream');
   const containerName = 'blobcontainer';
   const ONE_MEGABYTE = 1024 * 1024;
