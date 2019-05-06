@@ -1,8 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-//const path = require('path')
-//const fs = require('fs')
 const multer = require ("multer"); // storage of images
 const port = 8080;
 const {
