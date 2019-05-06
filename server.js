@@ -35,7 +35,8 @@ const {
     const identifier = Math.random().toString().replace(/0\./, ''); 
     return `${identifier}-${originalName}`;
   };
-
+  
+  app.use(express.static('.'));
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
 
@@ -76,8 +77,6 @@ app.get('/images', async(req, res) => {
 
     }
 })
-
-app.use(express.static('.'));
  
 app.listen(8080, function () { 
    console.log("Listening to port 8080"); 
