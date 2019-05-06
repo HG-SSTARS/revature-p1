@@ -5,6 +5,7 @@ webappname=$2
 serviceplan=$3
 acccosmosdb=tacccosmosdb
 databaseName=tcosmosdb
+containerName=tcontainer
 
 ## create resourcegroup
 az group create --name $group --location southcentralus
@@ -33,3 +34,7 @@ az cosmosdb create --resource-group $group --name $acccosmosdb --kind GlobalDocu
 
 ## Create a cosmosdb database
 az cosmosdb database create --resource-group $group --name $acccosmosdb --db-name $databaseName
+
+## Create a SQL API container
+az cosmosdb collection create --resource-group $group --collection-name $containerName \
+   --name $acccosmosdb --db-name $databaseName
