@@ -3,6 +3,8 @@
 group=$1
 webappname=$2
 serviceplan=$3
+acccosmosdb=tacccosmosdb
+databaseName=tcosmosdb
 
 ## create resourcegroup
 az group create --name $group --location southcentralus
@@ -25,3 +27,9 @@ az webapp create --name $webappname --resource-group $group --plan $serviceplan 
 
 ## Configure local Git and get deployment URL
 az webapp deployment source config --name $webappname --resource-group $group --branch master --manual-integretion --repo-url https://github.com/HG-SSTARS/revature-p1
+
+## Create a SQL API CosmosDB account
+az cosmosdb create --resource-group $group --name $acccosmosdb --kind GlobalDocumentDB
+
+## Create a cosmosdb database
+az cosmosdb database create --resource-group $group --name $acccosmosdb --db-name $databaseName
